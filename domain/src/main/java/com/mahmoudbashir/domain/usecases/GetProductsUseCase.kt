@@ -5,7 +5,7 @@ import com.mahmoudbashir.domain.repository.GetProductsRepoImpl
 import com.mahmoudbashir.domain.utils.Resource
 
 class GetProductsUseCase(private val repoImpl: GetProductsRepoImpl) {
-    suspend operator fun invoke():Resource<MutableList<ProductsModelItem>>{
+    suspend operator fun invoke():Resource<MutableList<ProductsModelItem>?>{
         return try {
             val data = repoImpl.getProducts()
              Resource.Success(data)

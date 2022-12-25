@@ -1,7 +1,8 @@
-package com.example.tplan
+package com.mahmoudbashir.tplan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tplan.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

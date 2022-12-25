@@ -1,4 +1,4 @@
-package com.example.tplan
+package com.mahmoudbashir.domain
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.tplan", appContext.packageName)
+        assertEquals("com.mahmoudbashir.domain.test", appContext.packageName)
     }
 }

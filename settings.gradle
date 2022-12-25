@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "TPlan"
 include ':app'
+include ':domain'
+include ':data'

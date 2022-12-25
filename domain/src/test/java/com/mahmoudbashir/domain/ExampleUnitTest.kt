@@ -1,4 +1,4 @@
-package com.example.tplan
+package com.mahmoudbashir.domain
 
 import org.junit.Test
 

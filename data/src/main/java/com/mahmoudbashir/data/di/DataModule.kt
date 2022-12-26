@@ -1,7 +1,9 @@
 package com.mahmoudbashir.data.di
 
 import com.mahmoudbashir.data.remote.ApiServer
+import com.mahmoudbashir.data.repository.RemoteProductsRepoImp
 import com.mahmoudbashir.data.utils.Constants
+import com.mahmoudbashir.domain.repository.GetProductsRepoImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,6 +19,7 @@ import javax.inject.Singleton
 class DataModule{
 
     @Provides
+    @Singleton
     fun provideBaseUrl() = Constants.BASE_URL
 
     @Provides
@@ -34,6 +37,11 @@ class DataModule{
             .client(client)
             .build()
     }
-
+    @Provides
+    @Singleton
     fun getApiInterface(retrofit: Retrofit):ApiServer = retrofit.create(ApiServer::class.java)
+
+    @Provides
+    @Singleton
+    fun getRepImp(repo: RemoteProductsRepoImp):GetProductsRepoImpl=repo
 }

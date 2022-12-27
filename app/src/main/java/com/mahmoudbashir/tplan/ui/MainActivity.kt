@@ -1,5 +1,6 @@
 package com.mahmoudbashir.tplan.ui
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -14,13 +15,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        window.statusBarColor = Color.WHITE
 
-        lifecycleScope.launchWhenCreated {
-            mainVM.proList.observe(this@MainActivity){
-                if (!it.isNullOrEmpty()){
-                    Toast.makeText(this@MainActivity,"size : ${it.size}",Toast.LENGTH_LONG).show()
-                }
-            }
-        }
+//        lifecycleScope.launchWhenCreated {
+//            mainVM.proList.observe(this@MainActivity){
+//                if (!it.isNullOrEmpty()){
+//                    Toast.makeText(this@MainActivity,"size : ${it.size}",Toast.LENGTH_LONG).show()
+//                }
+//            }
+//        }
     }
 }

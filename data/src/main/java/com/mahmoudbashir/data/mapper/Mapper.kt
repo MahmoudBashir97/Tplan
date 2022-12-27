@@ -1,5 +1,7 @@
 package com.mahmoudbashir.data.mapper
 
+import android.content.Context
+import android.widget.TextView
 import com.mahmoudbashir.data.models.ProductsResponseItem
 import com.mahmoudbashir.data.models.Rating
 import com.mahmoudbashir.domain.model.ProductsModelItem
@@ -34,3 +36,4 @@ fun ProductsResponseItem.toDomain():ProductsModelItem{
         title
     )
 }
+

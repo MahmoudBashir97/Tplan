@@ -1,5 +1,9 @@
 package com.mahmoudbashir.data.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class ProductsResponseItem(
     val category: String,
     val description: String,
@@ -8,4 +12,4 @@ data class ProductsResponseItem(
     val price: Double,
     val rating: Rating,
     val title: String
-)
+):Parcelable

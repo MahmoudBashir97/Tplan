@@ -1,4 +1,4 @@
-package com.mahmoudbashir.tplan.fragments.view
+package com.mahmoudbashir.tplan.fragments.home.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

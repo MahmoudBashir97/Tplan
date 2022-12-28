@@ -1,4 +1,4 @@
-package com.mahmoudbashir.tplan.fragments.view
+package com.mahmoudbashir.tplan.fragments.home.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import com.mahmoudbashir.data.models.ProductsResponseItem
 import com.mahmoudbashir.tplan.utils.textToCurrency
 import com.squareup.picasso.Picasso
 
-class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.VH>() {
+class MensAdapter(val clickedListener:ClickedItemListener): RecyclerView.Adapter<MensAdapter.VH>() {
 
     private  var proList:List<ProductsResponseItem> = ArrayList()
     fun setList(list:List<ProductsResponseItem>){
@@ -37,7 +37,12 @@ class ProductsAdapter: RecyclerView.Adapter<ProductsAdapter.VH>() {
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.bind(proList[position])
+        holder.itemView.setOnClickListener{
+            clickedListener.onItemClicked(position,proList[position])
+        }
     }
 
     override fun getItemCount(): Int = proList.size
+
+
 }

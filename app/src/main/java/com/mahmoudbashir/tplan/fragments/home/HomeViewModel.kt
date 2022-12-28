@@ -1,9 +1,10 @@
-package com.mahmoudbashir.tplan.fragments
+package com.mahmoudbashir.tplan.fragments.home
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+
 import com.mahmoudbashir.data.mapper.toLocal
 import com.mahmoudbashir.data.models.ProductsResponseItem
 import com.mahmoudbashir.domain.usecases.GetProductsUseCase

@@ -1,19 +1,18 @@
-package com.mahmoudbashir.tplan.fragments
+package com.mahmoudbashir.tplan.fragments.home
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.example.tplan.databinding.FragmentHomeScreenBinding
 import com.mahmoudbashir.data.models.ProductsResponseItem
-import com.mahmoudbashir.tplan.fragments.view.BannerItemsAdapter
-import com.mahmoudbashir.tplan.fragments.view.MensAdapter
-import com.mahmoudbashir.tplan.fragments.view.ProductsAdapter
-import com.mahmoudbashir.tplan.fragments.view.WomenAdapter
+import com.mahmoudbashir.tplan.fragments.home.view.*
 import com.mahmoudbashir.tplan.utils.*
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
@@ -21,10 +20,11 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class HomeScreenFragment : Fragment() {
+class HomeScreenFragment : Fragment() ,
+ClickedItemListener{
     lateinit var binding: FragmentHomeScreenBinding
     private val viewModel by viewModels<HomeViewModel>()
-    lateinit var bannerAdapter:BannerItemsAdapter
+    lateinit var bannerAdapter: BannerItemsAdapter
     private lateinit var mlist:List<ProductsResponseItem>
     private lateinit var productsAdapter: ProductsAdapter
     private lateinit var mensAdapter: MensAdapter
@@ -60,9 +60,9 @@ class HomeScreenFragment : Fragment() {
     private fun doInitialize() {
         mlist = ArrayList()
         bannerAdapter = BannerItemsAdapter()
-        productsAdapter = ProductsAdapter()
-        mensAdapter = MensAdapter()
-        womenAdapter = WomenAdapter()
+        productsAdapter = ProductsAdapter(this)
+        mensAdapter = MensAdapter(this)
+        womenAdapter = WomenAdapter(this)
     }
 
     private fun setUpRecyclerViews(){
@@ -82,7 +82,7 @@ class HomeScreenFragment : Fragment() {
                 mlist = productList
                 bannerAdapter.setList(productList)
 
-                lifecycleScope.launch {
+                lifecycleScope.launchWhenStarted {
                     reverseItSelf()
                 }
                 mensAdapter.setList(productList.mensProducts())
@@ -121,9 +121,13 @@ class HomeScreenFragment : Fragment() {
     }
 
 }
+    companion object{
+        var reverseCount  = 0
+    }
 
-companion object{
-    var reverseCount  = 0
-}
-
+    override fun onItemClicked(position: Int, product: ProductsResponseItem) {
+        findNavController().navigate(HomeScreenFragmentDirections.
+        actionHomeScreenFragmentToDetailsFragment(product)
+        )
+    }
 }

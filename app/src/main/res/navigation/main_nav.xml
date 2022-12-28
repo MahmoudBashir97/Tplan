@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/homeScreenFragment"
-        android:name="com.mahmoudbashir.tplan.fragments.HomeScreenFragment"
+        android:name="com.mahmoudbashir.tplan.fragments.home.HomeScreenFragment"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.mahmoudbashir.tplan.fragments.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="product"
+            app:argType="com.mahmoudbashir.data.models.ProductsResponseItem" />
+    </fragment>
 </navigation>

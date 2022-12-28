@@ -2,7 +2,6 @@ package com.mahmoudbashir.data.di
 
 import com.mahmoudbashir.data.remote.ApiServer
 import com.mahmoudbashir.data.repository.RemoteProductsRepoImp
-import com.mahmoudbashir.data.utils.Constants
 import com.mahmoudbashir.domain.repository.GetProductsRepoImpl
 import dagger.Module
 import dagger.Provides
@@ -18,9 +17,16 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DataModule{
 
+
+    init {
+        System.loadLibrary("native-lib")
+    }
+
+    external fun getBaseUrlFromNative(): String
+
     @Provides
     @Singleton
-    fun provideBaseUrl() = Constants.BASE_URL
+    fun provideBaseUrl() = getBaseUrlFromNative()
 
     @Provides
     @Singleton

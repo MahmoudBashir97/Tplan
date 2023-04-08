@@ -8,11 +8,6 @@ import javax.inject.Inject
 
 class RemoteProductsRepoImp @Inject constructor(private val api:ApiServer):GetProductsRepoImpl {
 
-    init {
-        System.loadLibrary("native-lib")
-    }
-
-    external fun getBaseUrlFromNative(): String
     override suspend fun getProducts(): MutableList<ProductsModelItem>? {
         return  api.getProductsResponse().body()?.map { product->product.toDomain()}?.toMutableList()
     }

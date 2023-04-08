@@ -10,4 +10,7 @@
     <color name="green">#21CD28</color>
     <color name="gold">#FFC107</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="main_color">#0E132C</color>
+    <color name="toolbar_color">#0C1022</color>
+    <color name="search_color">#BBC1DF</color>
 </resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="#FAFAFA"
+    android:background="@color/main_color"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.mahmoudbashir.tplan.fragments.home.HomeScreenFragment">
 <androidx.constraintlayout.widget.ConstraintLayout
